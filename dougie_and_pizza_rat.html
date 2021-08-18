@@ -1,0 +1,190 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Dougie The Donut & Pizza Rat</title>
+        <link href="./styles.css" rel="stylesheet" type="text/css" />
+        <script>
+            src="https://code.jquery.com/jquery-3.5.0.min.js"
+        </script>
+        <script> src="./app.js" charset="utf-8"</script>
+    </head>
+    <body>
+        <header>
+            <h1>Where Can We Cause Trouble Today?</h1>
+            <form>
+                <input>type="text" id="input-box" placeholder k="# OF COMPLAINTS"</input>
+            </form>
+            <button type="button" value="BROOKLYN">BROOKLYN</button>
+            <button type="button" value="MANHATTAN">MANHATTAN</button>
+            <button type="button" value="Queens">Queens</button>
+            <button type="button" value="BRONX">BRONX</button>
+            <button type="button" value="STATEN ISLAND">STATEN ISLAND</button>
+        </header>
+        <div>class="container"</div>
+    </body>
+    </html>
+    const NYPD_AGENCY = "New York City Police Department";
+    const BOROUGHS = ["BROOKLYN," "MANHATTAN", "QUEENS", "STATEN ISLAND", "BRONX"];
+    const NUM_OF_BOROUGH_DIVS = <BOROUGHS class="length"></BOROUGHS>
+    let backgroundColors =["green", "blue", "red", "orange", "purple"];
+    const MY_URL = ("https://data.cityofnewyork.US/resource/erm2-nwe9.json?$limit=2");
+    const DEFAULT_LIMIT = 10;
+    $(() => {
+        $("body").css({
+            "background-color": "lightgrey"
+        });
+        $("cpoyright-spacing").css({
+            "display": "flex",
+            "justify-content": "center"
+        })
+        $(".copyright").css({
+            "font-weight": "bold",
+            "font-size": "20px"
+            "margin": "10px"
+        })
+        $("h2").css({
+            "font-size" : "2rem",
+            "text-transform" : "capitalize"
+        })
+        $(".borough").append('<button class="getAnswers">');
+            $(".getAnswers").text("check");
+            $(".getAnswers").css({
+                "height" : "4rem",
+                "width" : "8rem",
+                "color" : "white",
+                "font-size" : "1.5rem",
+                "font weight" : "bolder",
+                "text=transform" : "capitalize",
+                "background" : rgba(0,0,0,0.25)",
+                "cursor" : "pointer"
+            });
+            $(".containerDiv").append('<button class="closeResults">')
+                $(".closeresults").css({
+                    "height" : "2rem",
+                    "width" : "5rem",
+                    "display" "none"
+                })
+                $(".closeResults").text("close");
+                $(".closeResults").css({
+                    "cursor" : "pointer"
+                })
+                backgroundColors.forEach((item, index) => {
+                    $(".borough").eq(index).css({
+                        "background-color" : item,
+                        "margin-right" : "50%"
+                    })
+                })
+                for(let i = 0; i < NUM_OF_BOROUGH; i++) {
+                    let userInput;
+                    let boroughStyle;
+                    $(".getAnswers").eq(i).on("submit", (e) => {
+                        e.preventDefault();
+                    })
+                    $("h2").eq(i).append("<input>");
+                    $(".closeResults").eq(i).click(() => {
+                        $("p").eq(i).html("");
+                        $("p").eq(i).css({
+                            "width" : "0",
+                            "background" : "none",
+                            "margin" : "0"
+                            "padding" : "0"
+                        })
+                        $(".closeResults").eq(i).css({
+                            "display" : "none"
+                        })
+                    })
+                    $(".getAnswers").eq(i).click(()=>{
+                        userInput = parseInt($("input:text").
+                        boroughStyle =
+                        $("p").eq(i).css({
+                            "width" "50%",
+                            "background" : "lightblue",
+                            "margin" : "1rem",
+                            "padding" : "1rem"
+                        });
+                        if(typeof userInput === "number" && isNaN(userInput) === false {
+                            $.ajax({
+                                url: My_URL,
+                                type: "GET",
+                                data: {
+                                    "$limit": userInput,
+                                    "$$app_token" : APP_TOKEN,
+                                    "agency_name" : NYPD_AGENCY,
+                                    "borough" : BOROUGHS[i]
+                                }
+                            }).done((data) => {
+                                $("p").eq(i.html("");
+                                boroughstyle;
+                                $(".closeResults").eq(i).css({
+                                    "display" : "block"
+                                }) 
+                                for(let j = 0; j < userInput; j++) {
+                                    $("p").eq(i).append( <p>${data[j].bororugh}: complaint: ${data[j].complaint_type - ${data[j].descriptor} <button class=responseButton id= responseButton${j}>police response</button></p>p>/n;
+                                    $(".responseButton").css({
+                                        "text-transform" : "capitalize",
+                                        "background-color" : "red",
+                                        "cursor" : "pointer"
+                                    })
+                                    let toggle = true;
+                                    $(#responseButton${j} ).on("click"), () => {
+                                        if(toggle === true){
+                                            $(#responseButtons${j} ).text("police response")
+                                            toggle = true;
+                                        }
+                                    })
+                                }
+                            })
+                        } else /* if ($("input:text").eq(i).val("0") isNaN(userInput) === true) */ {
+                            $.ajax({
+                                url: MY_URL,
+                                type: "GET",
+                                data: {
+                                    "limit" : Default_LIMIT,
+                                    "$$app token" : APP_TOKEN,
+                                    "agency_name" : NYPD_Agency,
+                                    "borough" :BOROUGHS[i]
+                                }
+                            }).done((data) => {
+                                $("p").eq(i).html("");
+                                boroughStyle;
+                                $(".closeResults").eq(i).css({
+                                    "display" : "block"
+                                })
+                                for (let j =0; j < DEFAULT_LIMIT; J ++) {
+                                    $("P").eq(I).append( <P>${data[j].borough}
+                                        $(".responseButton").css({
+                                            "text-transform" : "capitalize",
+                                            "background-color" : "red",
+                                            "cursor" : "pointer"
+                                        })
+                                        let toggle = true;
+                                        $( #responseButtons${j} )."click", () => {
+                                            if(toggle === true){
+                                                $( #responseButtons${j} ).text( Resolution: ${data[j].resolution_description} )
+                                                toggle = false;
+                                            }else {
+                                                $( #responseButtons${j} ).text( Resolution: ${data[j.resolution_description} )
+                                                toggle = false;
+                                            }else {
+                                                $( #responseButtons${j} ).text("police response")
+                                                toggle = true;
+                                            }
+                                        })
+                                }
+                            });
+                        }
+                    })
+                 }
+                 $("input:text").css({
+                     "margin-left" : "1rem"
+                 })
+                 $("input:text").attr("placeholder", "Type your number here");
+                 console.log(promise);
+
+
+                                        
+
+                        
+
+    
